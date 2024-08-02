@@ -1,0 +1,38 @@
+.swiper {
+    width: 100%;
+    height: 100%;
+    padding-bottom: 60px; /* Add padding to make space for pagination */
+  }
+  
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+  
+    /* Center slide text vertically */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 400px; /* Adjust height to make all images the same size */
+    object-fit: cover;
+  }
+  
+  .swiper-slide-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .swiper-slide-content p {
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+  }
+  

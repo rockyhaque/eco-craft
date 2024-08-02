@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "image": "https://i.ibb.co/TBXJhdw/pexels-tiana-18128-2995012.jpg",
+    "name": "Handcrafted Wooden Chair",
+    "category": "Wooden Furniture",
+    "description": "A beautifully handcrafted wooden chair perfect for any living room. Made from high-quality oak, this chair features intricate carvings that showcase the skill of the artisan. The smooth finish and ergonomic design provide both comfort and style, making it an ideal addition to any home. Whether you're looking for a statement piece for your living room or a comfortable chair for your reading nook, this wooden chair is sure to meet your needs. The natural wood grain adds a touch of elegance, while the sturdy construction ensures it will last for years to come.",
+    "price": 120.99,
+    "rating": 4.5,
+    "customization": "Yes",
+    "processing_time": "2-3 weeks",
+    "stockStatus": "In Stock"
+  },
+  {
+    "id": 2,
+    "image": "https://i.ibb.co/SwZWVNQ/pexels-cheng-shi-song-427082720-20848052.jpg",
+    "name": "Wooden Dragon Sculpture",
+    "category": "Wooden Sculptures",
+    "description": "An intricately carved wooden dragon sculpture that adds elegance to your home decor. This stunning piece is crafted from premium teak wood, known for its durability and beautiful grain. The dragon, a symbol of power and wisdom, is depicted in a dynamic pose, showcasing the fine details of its scales and features. Perfect for display on a mantel, bookshelf, or entryway table, this sculpture is a testament to the craftsmanship of the artist. Its rich, dark finish enhances the natural beauty of the wood, making it a standout piece in any room. Whether as a gift or a personal treasure, this dragon sculpture is sure to be cherished for years to come.",
+    "price": 350.0,
+    "rating": 4.8,
+    "customization": "No",
+    "processing_time": "1-2 weeks",
+    "stockStatus": "Made to Order"
+  },
+  {
+    "id": 3,
+    "image": "https://i.ibb.co/nMWdMMc/pexels-orlovamaria-4946961.jpg",
+    "name": "Wooden Wall Clock",
+    "category": "Wooden Home Decor",
+    "description": "A stylish wooden wall clock to enhance your home decor. This clock is made from sustainably sourced maple wood and features a minimalist design that blends seamlessly with any interior style. The silent quartz movement ensures accurate timekeeping without the annoying ticking sound. The clock face is adorned with sleek, modern numerals and hands, making it easy to read from a distance. Perfect for your living room, kitchen, or office, this wooden wall clock is both functional and aesthetically pleasing. Its timeless design ensures it will remain a favorite piece in your home for years to come.",
+    "price": 65.5,
+    "rating": 4.3,
+    "customization": "Yes",
+    "processing_time": "1 week",
+    "stockStatus": "In Stock"
+  },
+  {
+    "id": 4,
+    "image": "https://i.ibb.co/99sTrr0/pexels-tima-miroshnichenko-7879862.jpg",
+    "name": "Wooden Spoon Set",
+    "category": "Wooden Utensils",
+    "description": "A set of durable and eco-friendly wooden spoons. These spoons are crafted from high-quality beech wood, known for its strength and resistance to wear. The set includes various sizes, perfect for all your cooking needs. Each spoon is hand-sanded to a smooth finish, ensuring a comfortable grip and safe use with non-stick cookware. The natural wood material is not only sustainable but also adds a rustic charm to your kitchen. Ideal for stirring, mixing, and serving, these wooden spoons are a must-have for any home chef who values quality and craftsmanship.",
+    "price": 25.99,
+    "rating": 4.2,
+    "customization": "No",
+    "processing_time": "3-5 days",
+    "stockStatus": "In Stock"
+  },
+  {
+    "id": 5,
+    "image": "https://i.ibb.co/9w03cS3/pexels-margarita-141441249-20844308.jpg",
+    "name": "Wooden Cutting Board",
+    "category": "Wooden Kitchenware",
+    "description": "A high-quality wooden cutting board for your kitchen needs. This cutting board is made from durable acacia wood, which is naturally resistant to bacteria and moisture. The board features a juice groove to catch liquids and keep your workspace clean. Its large surface area provides ample space for chopping vegetables, slicing meats, and preparing your favorite meals. The board's natural wood grain adds a touch of elegance to your kitchen, while the sturdy construction ensures it will withstand daily use. Easy to clean and maintain, this cutting board is both practical and beautiful.",
+    "price": 45.0,
+    "rating": 4.7,
+    "customization": "Yes",
+    "processing_time": "1 week",
+    "stockStatus": "In Stock"
+  },
+  {
+    "id": 6,
+    "image": "https://i.ibb.co/641c05P/pexels-kseniachernaya-3965563.jpg",
+    "name": "Jute Plant Hanger",
+    "category": "Jute Home Decor",
+    "description": "A beautiful jute plant hanger to add a touch of nature to your home. This plant hanger is handcrafted from natural jute fibers, making it both sturdy and eco-friendly. Its simple yet elegant design can accommodate a variety of pot sizes and shapes, making it versatile for different plants. Perfect for indoor or outdoor use, it adds a bohemian touch to any space. The jute material is not only durable but also adds a warm, earthy feel to your decor. Whether you hang it in your living room, balcony, or garden, this plant hanger will showcase your plants beautifully.",
+    "price": 15.75,
+    "rating": 4.6,
+    "customization": "No",
+    "processing_time": "5-7 days",
+    "stockStatus": "In Stock"
+  },
+  {
+    "id": 7,
+    "image": "https://i.ibb.co/tpzWMk4/pexels-sarah-chai-7262898.jpg",
+    "name": "Jute Placemat Set",
+    "category": "Jute Kitchenware",
+    "description": "A set of handcrafted jute placemats for your dining table. These placemats are made from natural jute fibers, providing a rustic and eco-friendly addition to your table setting. The set includes four placemats, each featuring a unique woven pattern that adds texture and charm to your dining experience. They are durable, easy to clean, and protect your table from scratches and heat. Perfect for everyday use or special occasions, these jute placemats bring a touch of nature into your home while enhancing the overall aesthetic of your dining area.",
+    "price": 35.2,
+    "rating": 4.4,
+    "customization": "Yes",
+    "processing_time": "1 week",
+    "stockStatus": "In Stock"
+  },
+  {
+    "id": 8,
+    "image": "https://i.ibb.co/c3Xvw8T/pexels-cup-of-couple-8474068.jpg",
+    "name": "Jute Coaster Set",
+    "category": "Jute Utensils",
+    "description": "A set of eco-friendly jute coasters for your beverages. These coasters are handcrafted from high-quality jute fibers, making them both stylish and sustainable. The set includes six coasters, each with a unique design that adds a rustic charm to your coffee table or dining area. They are highly absorbent, protecting your surfaces from water rings and spills. Easy to clean and maintain, these coasters are perfect for everyday use or entertaining guests. Their natural texture and warm tones complement any decor style, making them a practical and decorative addition to your home.",
+    "price": 12.5,
+    "rating": 4.1,
+    "customization": "No",
+    "processing_time": "3-5 days",
+    "stockStatus": "In Stock"
+  },
+  {
+    "id": 9,
+    "image": "https://i.ibb.co/JHQmnrK/pexels-cottonbro-6074019.jpg",
+    "name": "Jute Bag",
+    "category": "Jute",
+    "description": "A versatile jute bag for everyday use. This bag is made from 100% natural jute fibers, making it eco-friendly and durable. It features a spacious main compartment and sturdy handles, perfect for carrying groceries, books, or personal items. The simple yet stylish design makes it suitable for both casual and formal occasions. The jute material is not only strong but also biodegradable, making this bag a sustainable choice for environmentally conscious individuals. Whether you use it for shopping, traveling, or as a stylish accessory, this jute bag is both practical and fashionable.",
+    "price": 20.99,
+    "rating": 4.3,
+    "customization": "Yes",
+    "processing_time": "2-3 weeks",
+    "stockStatus": "Made to Order"
+  },
+  {
+    "id": 10,
+    "image": "https://i.ibb.co/Dw3ddV6/pexels-maksgelatin-4354593.jpg",
+    "name": "Wooden Jewelry Box",
+    "category": "Wooden Jewelry",
+    "description": "A luxurious wooden jewelry box to store and organize your precious accessories. This box is handcrafted from premium mahogany wood, known for its rich color and durability. It features multiple compartments and drawers lined with velvet, providing a soft and protective space for your jewelry collection. The intricate carvings and brass hardware add an elegant touch, making it a statement piece on your dresser or vanity. Whether you're looking for a gift or a personal treasure, this jewelry box combines beauty with functionality, ensuring your jewelry is kept safe and organized.",
+    "price": 85.0,
+    "rating": 4.9,
+    "customization": "Yes",
+    "processing_time": "1-2 weeks",
+    "stockStatus": "In Stock"
+  }
+]
