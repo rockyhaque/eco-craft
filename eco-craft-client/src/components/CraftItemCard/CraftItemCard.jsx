@@ -37,7 +37,8 @@ const CraftItemCard = ({ craft }) => {
                       {rating}
                     </span>
                   </div>
-                  <Link to={`/craftDetails/${craft._id}`}
+                  <Link
+                    to={`/craftDetails/${craft._id}`}
                     className="flex justify-center items-center bg-teal-600 bg-opacity-80 z-10 absolute top-0 left-0 w-full h-full text-white rounded-2xl opacity-0 transition-all duration-300 transform group-hover:scale-105 text-xl group-hover:opacity-100"
                     target="_self"
                     rel="noopener noreferrer"
@@ -107,7 +108,7 @@ const CraftItemCard = ({ craft }) => {
                 <div className="text-center mt-4">
                   <Link
                     to={`/craftDetails/${craft._id}`}
-                    className="btn btn-sm md:btn-md lg:btn-wide hover:bg-gradient-to-l bg-gradient-to-r from-emerald-300 to-orange-400 font-semibold text-sm md:text-lg lg:text-lg"
+                    className="btn btn-sm md:btn-md lg:btn-wide bg-gradient-to-r from-emerald-300 to-orange-400 font-semibold text-sm md:text-lg lg:text-lg text-white rounded-full px-6 py-1 shadow-lg transition-all duration-300 ease-in-out transform hover:scale-110 hover:bg-gradient-to-l hover:from-orange-400 hover:to-emerald-300 hover:shadow-2xl hover:text-black hover:-translate-y-1 hover:border hover:border-emerald-400 focus:outline-none focus:ring-4 focus:ring-emerald-300"
                   >
                     View Details
                   </Link>
