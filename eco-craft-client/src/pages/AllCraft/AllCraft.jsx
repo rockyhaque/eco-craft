@@ -1,15 +1,33 @@
-// import { useEffect, useState } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
-import { Link, useLoaderData } from "react-router-dom";
-
+import { Link } from "react-router-dom";
 
 const AllCraft = () => {
-  const loadedCraft = useLoaderData();
-  const [crafts, setCrafts] = useState(loadedCraft);
+  const [crafts, setCrafts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState(""); // State to store search input
 
-  const {_id, name, category, email, price, userName, craftPhotoURL, stockStatus} = crafts;
+  // Fetch data from the API dynamically using the environment variable
+  useEffect(() => {
+    const fetchCrafts = async () => {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/craft`);
+      const data = await response.json();
+      setCrafts(Array.isArray(data) ? data : []);
+      setLoading(false);
+    };
+    fetchCrafts();
+  }, []);
 
+  // Filter crafts based on the search term
+  const filteredCrafts = crafts.filter((craft) =>
+    craft.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
+    craft.category.toLowerCase().includes(searchTerm.toLowerCase()) || 
+    craft.price.toString().includes(searchTerm)
+  );
+
+  if (loading) {
+    return <div className="flex justify-center items-center"><span className="loading loading-dots loading-lg"></span></div>; 
+  }
 
   return (
     <div>
@@ -25,6 +43,17 @@ const AllCraft = () => {
           <h1 className="border-2 border-neutral-900 bg-black w-8"></h1>
           <h1 className="border-2 border-neutral-400 text-neutral-800 w-3"></h1>
         </div>
+      </div>
+
+      {/* Search Input */}
+      <div className="flex justify-center mb-8">
+        <input
+          type="text"
+          placeholder="Search crafts by name, category, or price..."
+          className="input input-bordered w-full max-w-xs"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)} // Update search term state
+        />
       </div>
 
       {/* Table root */}
@@ -43,43 +72,53 @@ const AllCraft = () => {
               </tr>
             </thead>
             <tbody>
-              {/* row 1 */}
-              {
-                crafts.map((craft) => <tr key={craft._id}>
-                  <td>
-                    <div className="flex items-center gap-3">
-                      <div className="avatar">
-                        <div className="mask mask-squircle h-12 w-12">
-                          <img
-                            src={craft.craftPhotoURL}
-                            alt="Avatar Tailwind CSS Component"
-                          />
+              {filteredCrafts.length > 0 ? (
+                filteredCrafts.map((craft) => (
+                  <tr key={craft._id}>
+                    <td>
+                      <div className="flex items-center gap-3">
+                        <div className="avatar">
+                          <div className="mask mask-squircle h-12 w-12">
+                            <img
+                              src={craft.craftPhotoURL}
+                              alt="Craft"
+                            />
+                          </div>
+                        </div>
+                        <div>
+                          <div className="font-bold">{craft.name}</div>
+                          <div className="text-sm opacity-50">
+                            {craft.stockStatus}
+                          </div>
                         </div>
                       </div>
-                      <div>
-                        <div className="font-bold">{craft.name}</div>
-                        <div className="text-sm opacity-50">{craft.stockStatus}</div>
-                      </div>
-                    </div>
+                    </td>
+                    <td>{craft.category}</td>
+                    <td>
+                      <span className="badge badge-ghost badge-sm">
+                        {craft.price}
+                      </span>
+                    </td>
+                    <td>{craft.userName}</td>
+                    <td>{craft.email}</td>
+                    <th>
+                      <Link
+                        to={`/craftDetails/${craft._id}`}
+                        className="btn text-white bg-teal-600  btn-md"
+                      >
+                        View Details
+                      </Link>
+                    </th>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan="6" className="text-center">
+                    No crafts available
                   </td>
-                  <td>
-                    {craft.category}
-                  </td>
-                  <td>
-                    <span className="badge badge-ghost badge-sm">
-                    {craft.price}
-                    </span>
-                  </td>
-                  <td>{craft.userName}</td>
-                  <td>{craft.email}</td>
-                  <th>
-                    <Link to={`/craftDetails/${craft._id}`} className="btn text-white bg-teal-600  btn-md">View Details</Link>
-                  </th>
-                </tr>)
-              }
-
+                </tr>
+              )}
             </tbody>
-            
           </table>
         </div>
       </div>

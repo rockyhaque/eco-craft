@@ -23,7 +23,7 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("https://eco-craft-server-phi.vercel.app/craft"),
+        loader: () => fetch(`${import.meta.env.VITE_API_URL}/craft`),
       },
       {
         path: "/login",
@@ -40,13 +40,13 @@ export const router = createBrowserRouter([
       {
         path: "/allCraft",
         element: <AllCraft></AllCraft>,
-        loader: () => fetch("https://eco-craft-server-phi.vercel.app/craft"),
+        // loader: () => fetch(`${import.meta.env.VITE_API_URL}/craft`),
       },
       {
         path: "/craftDetails/:id",
         element: <ViewDetails></ViewDetails>,
         loader: ({ params }) =>
-          fetch(`https://eco-craft-server-phi.vercel.app/craft/${params.id}`),
+          fetch(`${import.meta.env.VITE_API_URL}/craft/${params.id}`),
       },
       {
         path: "/myCraft",
@@ -80,7 +80,7 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`https://eco-craft-server-phi.vercel.app/craft/${params.id}`),
+          fetch(`${import.meta.env.VITE_API_URL}/craft/${params.id}`),
       },
       {
         path: "/users",
@@ -89,7 +89,7 @@ export const router = createBrowserRouter([
             <Users></Users>
           </PrivateRoute>
         ),
-        loader: () => fetch("https://eco-craft-server-phi.vercel.app/user"),
+        loader: () => fetch(`${import.meta.env.VITE_API_URL}/user`),
       },
     ],
   },

@@ -1,21 +1,27 @@
 import { useEffect, useState } from "react";
-import { useLoaderData } from "react-router-dom";
 import CraftItemCard from "../CraftItemCard/CraftItemCard";
 
 const CraftItems = () => {
-  const loadedCraft = useLoaderData();
-  const [crafts, setCrafts] = useState(loadedCraft);
+  const [crafts, setCrafts] = useState([]);
   const [visibleCount, setVisibleCount] = useState(6); 
   const [showAll, setShowAll] = useState(false); 
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate data fetching delay
-    setTimeout(() => {
-      setCrafts(loadedCraft);
-      setLoading(false);
-    }, 1000); // Adjust delay as needed
-  }, [loadedCraft]);
+    const fetchCraftItems = async () => {
+      try {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/craft`);
+        const data = await response.json();
+        setCrafts(data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching craft items:", error);
+        setLoading(false);
+      }
+    };
+
+    fetchCraftItems();
+  }, []);
 
   const handleToggleShow = () => {
     setShowAll(!showAll);

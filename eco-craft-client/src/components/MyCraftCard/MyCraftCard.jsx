@@ -31,7 +31,7 @@ const MyCraftCard = ({ craft, items, setItems }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://eco-craft-server-phi.vercel.app/craft/${_id}`, {
+        fetch(`${import.meta.env.VITE_API_URL}/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

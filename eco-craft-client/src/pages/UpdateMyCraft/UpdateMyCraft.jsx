@@ -105,7 +105,7 @@ const UpdateMyCraft = () => {
       craftPhotoURL,
     };
 
-    fetch(`https://eco-craft-server-phi.vercel.app/craft/${_id}`, {
+    fetch(`${import.meta.env.VITE_API_URL}/craft/${_id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

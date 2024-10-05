@@ -41,7 +41,7 @@ const AddCraft = () => {
       accountLastSignIn,
     };
 
-    fetch("https://eco-craft-server-phi.vercel.app/craft", {
+    fetch(`${import.meta.env.VITE_API_URL}/craft`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

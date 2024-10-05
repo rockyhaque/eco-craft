@@ -10,7 +10,7 @@ const MyCraft = () => {
 
   useEffect(() => {
     if (user?.email) {
-      fetch(`https://eco-craft-server-phi.vercel.app/myCraft/${user.email}`)
+      fetch(`${import.meta.env.VITE_API_URL}/myCraft/${user?.email}`)
         .then((res) => res.json())
         .then((data) => {
           setItems(data);
@@ -18,6 +18,8 @@ const MyCraft = () => {
         });
     }
   }, [user]);
+
+  console.log(items);
 
   return (
     <div>

@@ -18,7 +18,7 @@ const Users = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://eco-craft-server-phi.vercel.app/user/${id}`, {
+        fetch(`${import.meta.env.VITE_API_URL}/user/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
