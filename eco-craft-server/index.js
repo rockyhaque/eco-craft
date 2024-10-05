@@ -9,12 +9,12 @@ const port = process.env.PORT || 5000;
 
 // middleware
 app.use(express.json());
-app.use(cors());
+// app.use(cors());
 
-// app.use(cors({
-//   origin: ["https://eco-craft-beta.web.app"],
-//   credentials: true
-// }));
+app.use(cors({
+  origin: ["https://eco-craft-beta.web.app"],
+  credentials: true
+}));
 
 
 
@@ -42,10 +42,19 @@ async function run() {
 
     // craft apis
     app.get("/craft", async (req, res) => {
-      const cursor = craftCollection.find();
+      const search = req.query.search || ""; // Get the search term from the query parameters
+      const query = {
+        $or: [
+          { name: { $regex: search, $options: "i" } }, // Case-insensitive search for name
+          { category: { $regex: search, $options: "i" } },
+          { price: { $regex: search, $options: "i" } }
+        ]
+      };
+      const cursor = craftCollection.find(query);
       const result = await cursor.toArray();
       res.send(result);
-    })
+    });
+    
 
 
     app.post("/craft", async(req, res) => {
@@ -131,12 +140,9 @@ async function run() {
     })
 
 
-
-
-
     // Send a ping to confirm a successful connection
-    // await client.db("admin").command({ ping: 1 });
-    // console.log("Pinged your deployment. You successfully connected to MongoDB!");
+    await client.db("admin").command({ ping: 1 });
+    console.log("Pinged your deployment. You successfully connected to MongoDB!");
   } finally {
     // Ensures that the client will close when you finish/error
     // await client.close();
