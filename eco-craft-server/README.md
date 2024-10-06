@@ -1,14 +1,11 @@
-# Eco Craft Server - Jute & wooden Crafts
+# Eco Craft Server 
 
-> A10 Type-02 Requirements
-
-`Category`: Jute & wooden Crafts
 
 ## Live Link: https://eco-craft-beta.web.app
 
- > Client Side Repository: https://github.com/rockyhaque/eco-craft-client
+ > Client Side Repository: https://github.com/rockyhaque/eco-craft/tree/main/eco-craft-client
 
- > Server Side Repository: https://github.com/rockyhaque/eco-craft-server
+ > Server Side Repository: https://github.com/rockyhaque/eco-craft/tree/main/eco-craft-server
 
  > Server Side: https://eco-craft-server-phi.vercel.app
 
