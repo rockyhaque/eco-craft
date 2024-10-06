@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import CraftItemCard from "../CraftItemCard/CraftItemCard";
+import SectionHeading from "../SectionTitle/SectionHeading";
 
 const CraftItems = () => {
   const [crafts, setCrafts] = useState([]);
@@ -38,16 +39,13 @@ const CraftItems = () => {
 
   return (
     <div className="max-w-screen-xl mx-auto">
+      {/* Heading */}
       <div className="text-center mt-20">
-        <div className="inline-flex px-4 py-1.5 mx-auto rounded-full">
-          <p className="text-lg md:text-xl lg:text-3xl font-extrabold tracking-widest uppercase font-customPlaywrite">
-            Our All Items
-          </p>
-        </div>
+        <SectionHeading title="Our All Items" />
         <div className="flex justify-center items-center">
-          <p className="mt-6 text-base leading-relaxed text-gray-600 group-hover:text-white w-1/2">
-            By choosing Eco Craft, you are supporting a business that values the
-            environment and works tirelessly to reduce its carbon footprint.
+          <p className="mt-2 text-xl leading-relaxed text-gray-600 w-1/2">
+          By choosing Eco Craft, you are supporting a business that values the
+          environment and works tirelessly to reduce its carbon footprint.
           </p>
         </div>
       </div>

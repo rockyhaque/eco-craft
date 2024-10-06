@@ -1,92 +1,126 @@
-import { JackInTheBox, Zoom } from "react-awesome-reveal";
+import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { Facebook, Twitter, Instagram, Mail, Leaf } from 'lucide-react';
 
-const Footer = () => {
+export default function Footer() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
+
   return (
-    <footer className="bg-gradient-to-tl from-stone-100 via-transparent to-orange-300">
-      <div className="footer p-10  text-base-content ">
-        <JackInTheBox>
-          <aside>
-        <h1 className="text-4xl font-bold">Eco Craft</h1>
-            <img
-              src="https://i.ibb.co/zbLjS7J/wood.png"
-              alt=""
-              className="w-20"
-            />
-            <p>
-              Eco Craft is your ultimate destination for exquisite jute and
-              wooden crafts.
-              <br />
-              We celebrate the beauty of nature through handmade, sustainable
-              creations <br /> that bring a touch of rustic elegance to your
-              home.
-            </p>
-          </aside>
-        </JackInTheBox>
-        <nav>
-          <h6 className="footer-title">Services</h6>
-          <a className="link link-hover">Branding</a>
-          <a className="link link-hover">Design</a>
-          <a className="link link-hover">Marketing</a>
-          <a className="link link-hover">Advertisement</a>
-        </nav>
-        <nav>
-          <h6 className="footer-title">Company</h6>
-          <a className="link link-hover">About us</a>
-          <a className="link link-hover">Contact</a>
-          <a className="link link-hover">Jobs</a>
-          <a className="link link-hover">Press kit</a>
-        </nav>
-        <nav>
-          <h6 className="footer-title">Legal</h6>
-          <a className="link link-hover">Terms of use</a>
-          <a className="link link-hover">Privacy policy</a>
-          <a className="link link-hover">Cookie policy</a>
-        </nav>
-      </div>
-      <div className="footer items-center p-4">
-        <Zoom>
-          <aside className="items-center grid-flow-col">
-            <p>Copyright © 2024 - All right reserved</p>
-          </aside>
-        </Zoom>
-        <nav className="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
-          <a>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              className="fill-current"
-            >
-              <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path>
-            </svg>
-          </a>
-          <a>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              className="fill-current"
-            >
-              <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path>
-            </svg>
-          </a>
-          <a>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              className="fill-current"
-            >
-              <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path>
-            </svg>
-          </a>
-        </nav>
+    <footer className="relative overflow-hidden py-16 bg-gradient-to-br from-emerald-900 to-teal-800">
+      <div className="absolute inset-0 bg-[url('/noise.png')] opacity-5 mix-blend-overlay" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+      <div
+        className="absolute inset-0 bg-gradient-to-br from-emerald-500/20 via-teal-500/20 to-cyan-500/20 backdrop-blur-[100px]"
+        style={{ zIndex: -1 }}
+      />
+      <motion.div
+        initial={{ y: 20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8, ease: 'easeOut' }}
+        className="absolute -top-12 -left-12 w-40 h-40 bg-gradient-to-br from-emerald-400 to-teal-300 rounded-full blur-3xl opacity-30"
+      />
+      <motion.div
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
+        className="absolute -bottom-16 -right-16 w-56 h-56 bg-gradient-to-tl from-cyan-400 to-teal-300 rounded-full blur-3xl opacity-20"
+      />
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="col-span-1 md:col-span-2"
+          >
+            <h2 className="text-4xl font-bold mb-4 text-white flex items-center">
+              <Leaf className="mr-2 text-emerald-400" />
+              Eco Craft
+            </h2>
+            <div className="bg-white/10 backdrop-blur-md rounded-lg p-4 shadow-lg">
+              <img
+                src="https://i.ibb.co/zbLjS7J/wood.png"
+                alt="Eco Craft Logo"
+                className="w-16 mb-4"
+              />
+              <p className="text-sm text-gray-200">
+                Eco Craft is your ultimate destination for exquisite jute and
+                wooden crafts. We celebrate the beauty of nature through
+                handmade, sustainable creations that bring a touch of rustic
+                elegance to your home.
+              </p>
+            </div>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="space-y-4"
+          >
+            <h3 className="text-xl font-semibold mb-4 text-white">Quick Links</h3>
+            <ul className="space-y-2">
+              {['About Us', 'Products', 'Sustainability', 'Contact'].map(
+                (item, index) => (
+                  <motion.li
+                    key={item}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.3, delay: index * 0.1 }}
+                  >
+                    <a
+                      href="#"
+                      className="text-gray-300 hover:text-emerald-400 transition-colors duration-300 flex items-center"
+                    >
+                      <span className="bg-gradient-to-r from-emerald-400 to-teal-400 w-2 h-2 rounded-full mr-2" />
+                      {item}
+                    </a>
+                  </motion.li>
+                )
+              )}
+            </ul>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
+            <h3 className="text-xl font-semibold mb-4 text-white">Connect</h3>
+            <div className="flex space-x-4">
+              {[Facebook, Twitter, Instagram, Mail].map((Icon, index) => (
+                <motion.a
+                  key={index}
+                  href="#"
+                  className="text-gray-300 hover:text-emerald-400 transition-colors duration-300"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <div className="bg-white/10 p-3 rounded-full backdrop-blur-md">
+                    <Icon size={24} />
+                  </div>
+                </motion.a>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+          className="mt-12 pt-8 border-t border-white/10"
+        >
+          <p className="text-center text-sm text-gray-400">
+            © {new Date().getFullYear()} Eco Craft. All rights reserved.
+          </p>
+        </motion.div>
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

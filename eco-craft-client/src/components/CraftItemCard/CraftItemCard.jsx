@@ -66,7 +66,8 @@ const CraftItemCard = ({ craft }) => {
                       <img
                         className="h-12 w-12 rounded-full object-cover"
                         src={photoURL}
-                        alt=""
+                        alt="photo"
+                        referrerPolicy="no-referrer"
                       />
                     </div>
                     <div className="flex flex-1">

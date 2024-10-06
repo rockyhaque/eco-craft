@@ -7,9 +7,8 @@ import { CgEye } from "react-icons/cg";
 import { Link } from "react-router-dom";
 import EmptyContent from "../../components/EmptyContent/EmptyContent";
 
-
 const Wishlist = () => {
-  const { user } = useAuth();
+  const { user } = useAuth() || {};
   const [wishlistItems, setWishlistItems] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -17,7 +16,7 @@ const Wishlist = () => {
     const fetchWishlist = async () => {
       const email = user?.email;
       if (!email) {
-        setLoading(false); 
+        setLoading(false);
         return;
       }
 
@@ -30,13 +29,13 @@ const Wishlist = () => {
       } catch (error) {
         console.error("Error fetching wishlist:", error);
       } finally {
-        setLoading(false); 
+        setLoading(false);
       }
     };
 
     fetchWishlist();
+    window.scrollTo(0, 0);
   }, [user]);
-
 
   const handleDelete = async (id) => {
     const result = await Swal.fire({
@@ -126,7 +125,7 @@ const Wishlist = () => {
                   </td>
                   <td>{item.itemPrice} BDT</td>
                   <td>
-                    <Link to={`/craftDetails/${item._id}`}>
+                    <Link to={`/craftDetails/${item.itemId}`}>
                       <CgEye
                         size={25}
                         className="text-gray-600 hover:text-green-300 cursor-pointer transition duration-800"

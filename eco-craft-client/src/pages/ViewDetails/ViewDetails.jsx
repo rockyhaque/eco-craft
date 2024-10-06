@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
-import { Link, useLoaderData, useParams } from "react-router-dom";
-import { FaBangladeshiTakaSign } from "react-icons/fa6";
+import { useLoaderData, useParams } from "react-router-dom";
+import {
+  FaBangladeshiTakaSign,
+  FaFacebook,
+  FaInstagram,
+  FaPinterest,
+} from "react-icons/fa6";
 import { CgNametag } from "react-icons/cg";
 import { IoCreateOutline } from "react-icons/io5";
 import { MdOutlineMarkEmailUnread } from "react-icons/md";
@@ -14,10 +19,7 @@ const ViewDetails = () => {
   const { id } = useParams();
   const singleCraft = useLoaderData();
   const { user } = useAuth();
-
   const [craft, setCraft] = useState(singleCraft);
-
-  console.log(craft);
 
   const {
     _id,
@@ -76,15 +78,16 @@ const ViewDetails = () => {
   };
 
   const handlePurchase = async (id) => {
-    const email = user?.email; // Assuming you have the user's email
+    const email = user?.email;
     const purchaseDetails = {
       userEmail: email,
       itemId: id,
       itemName: name,
       itemPrice: price,
       itemImage: craftPhotoURL,
+      description,
     };
-  
+
     try {
       const response = await fetch(`${import.meta.env.VITE_API_URL}/purchase`, {
         method: "POST",
@@ -93,20 +96,41 @@ const ViewDetails = () => {
         },
         body: JSON.stringify(purchaseDetails),
       });
-  
+
       if (response.ok) {
-        const result = await response.json();
-        toast.success(result.message); 
+        await response.json();
+        toast.success(`${name} added on your cart`);
       } else {
         const errorResponse = await response.json();
-        toast.error(errorResponse.message || "Failed to complete the purchase.");
+        toast.error(
+          errorResponse.message || "Failed to complete the purchase."
+        );
       }
     } catch (error) {
       console.error("Error making purchase:", error);
       toast.error("An error occurred while making the purchase.");
     }
   };
-  
+
+  const handleShare = () => {
+    if (navigator.share) {
+      navigator
+        .share({
+          title: `Check out this amazing craft: ${name}`,
+          text: description,
+          url: window.location.href,
+        })
+        .then(() => {
+          toast.success("Craft shared successfully!");
+        })
+        .catch((error) => {
+          toast.error("Error sharing craft: " + error);
+        });
+    } else {
+      toast.error("Web share not supported in this browser.");
+    }
+  };
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -150,7 +174,7 @@ const ViewDetails = () => {
               <h1 className="text-gray-900 text-3xl title-font  mb-1">
                 {name}
               </h1>
-              <div className="flex mb-4">
+              <div className="flex flex-col md:flex-row mb-4">
                 <span className="flex items-center">
                   <svg
                     fill="currentColor"
@@ -167,44 +191,51 @@ const ViewDetails = () => {
                   <span className="text-gray-600 ml-3">{rating} Reviews</span>
                 </span>
                 <span className="flex ml-3 pl-3 py-2 border-l-2 border-gray-200">
-                  <a className="text-gray-500">
-                    <svg
-                      fill="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      className="w-5 h-5"
-                      viewBox="0 0 24 24"
+                  {/* Social Sharing Buttons */}
+                  <div className="mt-2 flex gap-4">
+                    <button
+                      className="bg-blue-500 text-white px-2 py-2 rounded-lg hover:bg-blue-600 transition-transform duration-300 transform hover:scale-110 hover:shadow-lg"
+                      onClick={() =>
+                        window.open(
+                          `https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`,
+                          "_blank"
+                        )
+                      }
                     >
-                      <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
-                    </svg>
-                  </a>
-                  <a className="ml-2 text-gray-500">
-                    <svg
-                      fill="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      className="w-5 h-5"
-                      viewBox="0 0 24 24"
+                      <FaFacebook size={20} />
+                    </button>
+                    <button
+                      className="bg-pink-500 text-white p-2 rounded-lg hover:bg-pink-600 transition-transform duration-300 transform hover:scale-110 hover:shadow-lg"
+                      onClick={() =>
+                        window.open(
+                          `https://www.instagram.com/?url=${window.location.href}`,
+                          "_blank"
+                        )
+                      }
                     >
-                      <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" />
-                    </svg>
-                  </a>
-                  <a className="ml-2 text-gray-500">
-                    <svg
-                      fill="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      className="w-5 h-5"
-                      viewBox="0 0 24 24"
+                      <FaInstagram size={20} />
+                    </button>
+                    <button
+                      className="bg-red-500 text-white p-2 rounded-lg hover:bg-red-600 transition-transform duration-300 transform hover:scale-110 hover:shadow-lg"
+                      onClick={() =>
+                        window.open(
+                          `https://pinterest.com/pin/create/button/?url=${window.location.href}`,
+                          "_blank"
+                        )
+                      }
                     >
-                      <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" />
-                    </svg>
-                  </a>
+                      <FaPinterest size={20} />
+                    </button>
+                    <button
+                      className="bg-green-500 text-white p-2 rounded-lg hover:bg-green-600 transition-transform duration-300 transform hover:scale-110 hover:shadow-lg"
+                      onClick={handleShare}
+                    >
+                      Share
+                    </button>
+                  </div>
                 </span>
               </div>
+
               <p className="leading-relaxed mb-6">{description}</p>
 
               <div className="flex items-center gap-2">
@@ -277,10 +308,11 @@ const ViewDetails = () => {
           </div>
 
           {/* purchase button */}
-          <div onClick={() => handlePurchase(_id)} className="text-center mt-8 ">
-            <button
-              className="btn btn-sm md:btn-md lg:btn-wide bg-gradient-to-r from-emerald-300 to-orange-400 font-semibold text-sm md:text-lg lg:text-lg text-white rounded-full px-6 py-1 shadow-lg transition-all duration-300 ease-in-out transform hover:scale-110 hover:bg-gradient-to-l hover:from-orange-400 hover:to-emerald-300 hover:shadow-2xl hover:text-black hover:-translate-y-1 hover:border hover:border-emerald-400 focus:outline-none focus:ring-4 focus:ring-emerald-300"
-            >
+          <div
+            onClick={() => handlePurchase(_id)}
+            className="text-center mt-8 "
+          >
+            <button className="btn btn-sm md:btn-md lg:btn-wide bg-gradient-to-r from-emerald-300 to-orange-400 font-semibold text-sm md:text-lg lg:text-lg text-white rounded-full px-6 py-1 shadow-lg transition-all duration-300 ease-in-out transform hover:scale-110 hover:bg-gradient-to-l hover:from-orange-400 hover:to-emerald-300 hover:shadow-2xl hover:text-black hover:-translate-y-1 hover:border hover:border-emerald-400 focus:outline-none focus:ring-4 focus:ring-emerald-300">
               Purchase Now
             </button>
           </div>

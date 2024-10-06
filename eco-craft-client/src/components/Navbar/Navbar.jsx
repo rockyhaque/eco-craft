@@ -20,7 +20,7 @@ const Navbar = () => {
 
   const handleThemeToggle = (e) => {
     if (e.target.checked) {
-      setTheme("dracula");
+      setTheme("sunset");
     } else {
       setTheme("light");
     }

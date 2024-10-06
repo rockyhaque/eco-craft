@@ -38,16 +38,19 @@ const MyCart = () => {
     } else {
       setLoading(false);
     }
+    window.scrollTo(0, 0);
   }, [user.email]);
 
   const handleCancelItem = async (itemId) => {
     const result = await Swal.fire({
       title: "Are you sure?",
-      text: "This will permanently delete the item!",
+      text: "This will permanently cancel the item!",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonText: "Yes, delete it!",
+      confirmButtonText: "Yes, cancel it!",
       cancelButtonText: "No, keep it",
+      confirmButtonColor: "#C70039",
+      cancelButtonColor: "#93C572",
     });
 
     if (result.isConfirmed) {
@@ -84,6 +87,7 @@ const MyCart = () => {
     );
   }
 
+
   return (
     <div className="max-w-screen-xl px-6 py-4 mx-auto">
       <Helmet>
@@ -100,7 +104,8 @@ const MyCart = () => {
                 <th>Name</th>
                 <th>Description</th>
                 <th>Price</th>
-                <th>Purchased Time</th>
+                <th>Date</th>
+                <th>Time</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -108,9 +113,18 @@ const MyCart = () => {
               {purchasedItems.map((item) => (
                 <tr key={item.itemId}>
                   <td>{item.itemName}</td>
-                  <td>{item.itemDescription || "No description available."}</td>
+                  <td>
+                    {item?.description
+                      ? item.description.length > 100
+                        ? item.description.slice(0, 100) + ". . ."
+                        : item.description
+                      : "No description available."}
+                  </td>
+
                   <td>{item.itemPrice} BDT</td>
-                  <td>{new Date(item.purchaseTime).toLocaleString()}</td>
+                  <td>{new Date(item.purchaseTime).toLocaleDateString()}</td>
+                  <td>{new Date(item.purchaseTime).toLocaleTimeString()}</td>
+
                   <td>
                     <button
                       onClick={() => handleCancelItem(item.itemId)}

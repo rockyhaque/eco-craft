@@ -1,23 +1,19 @@
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
 import { FreeMode, Pagination } from "swiper/modules";
 import "./Category.css";
+import SectionHeading from "../SectionTitle/SectionHeading";
 
 const Category = () => {
   return (
     <div className="max-w-screen-xl mx-auto">
       {/* Heading */}
       <div className="text-center mt-20">
-        <div className="inline-flex px-4 py-1.5 mx-auto rounded-full">
-          <p className="text-lg md:text-xl lg:text-3xl font-extrabold tracking-widest uppercase font-customPlaywrite">
-            Category
-          </p>
-        </div>
+        <SectionHeading title="Category" />
         <div className="flex justify-center items-center">
-          <p className="mt-6 text-base leading-relaxed text-gray-600">
+          <p className="mt-2 text-xl leading-relaxed text-gray-600">
             Discover diverse categories tailored to your interests and needs.
             Find the latest trends, essential tools, <br /> and specialized
             services in our curated selection of high-quality options.
@@ -26,7 +22,9 @@ const Category = () => {
       </div>
 
       {/* Swiper */}
-      <div className="mt-12"> {/* Added margin-top to create space above the Swiper */}
+      <div className="mt-12">
+        {" "}
+        {/* Added margin-top to create space above the Swiper */}
         <Swiper
           slidesPerView={4}
           spaceBetween={30}

@@ -1,18 +1,25 @@
 import Category from "../../components/Category/Category";
-import Pricing from "../../components/Pricing/Pricing";
+import Faq from "../../components/FAQ/Faq";
+import GiftIdeaGenerator from "../../components/GiftIdeaGenerator/GiftIdeaGenerator";
+import JoinCommunity from "../../components/JoinCommunity/JoinCommunity";
+import OurSpeciality from "../../components/OurSpeciality/OurSpeciality";
 import Slider from "../../components/Slider/Slider";
-import Support from "../../components/Support/Support";
+import UpComingEvents from "../../components/UpComingEvents/UpComingEvents";
+import VideoTutorials from "../../components/VideoTutorials/VideoTutorials";
 import CraftItems from "./../../components/CraftItems/CraftItems";
 
 const Home = () => {
   return (
     <div>
-      
       <Slider></Slider>
       <Category></Category>
       <CraftItems></CraftItems>
-      <Pricing></Pricing>
-      <Support></Support>
+      <VideoTutorials />
+      <OurSpeciality />
+      <GiftIdeaGenerator />
+      <Faq />
+      <UpComingEvents />
+      <JoinCommunity />
     </div>
   );
 };
