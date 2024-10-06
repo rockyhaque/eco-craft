@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { Link, useLoaderData, useParams } from "react-router-dom";
 import { FaBangladeshiTakaSign } from "react-icons/fa6";
@@ -7,14 +7,17 @@ import { IoCreateOutline } from "react-icons/io5";
 import { MdOutlineMarkEmailUnread } from "react-icons/md";
 import { IoTimeOutline } from "react-icons/io5";
 import { MdOutlineDesignServices } from "react-icons/md";
+import useAuth from "../../hooks/useAuth";
+import toast from "react-hot-toast";
 
 const ViewDetails = () => {
   const { id } = useParams();
   const singleCraft = useLoaderData();
+  const { user } = useAuth();
 
   const [craft, setCraft] = useState(singleCraft);
 
-  // console.log(craft);
+  console.log(craft);
 
   const {
     _id,
@@ -30,8 +33,83 @@ const ViewDetails = () => {
     processing_time,
     description,
     accountCreation,
-    customization
+    customization,
   } = craft;
+
+  const handleAddOnWishlist = async (id) => {
+    const email = user?.email;
+
+    const itemDetails = {
+      userEmail: email,
+      itemId: id,
+      itemName: name,
+      itemDescription: description,
+      itemPrice: price,
+      itemImage: craftPhotoURL,
+    };
+
+    try {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/wishlist`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(itemDetails),
+      });
+
+      if (response.status === 400) {
+        const result = await response.json();
+        if (result.message === "Item already exists in wishlist.") {
+          toast.error("Item already exists in wishlist.");
+        } else {
+          toast.error("Failed to add item to wishlist.");
+        }
+      } else if (response.ok) {
+        toast.success(`${name} added to wishlist!`);
+      } else {
+        toast.error("Failed to add item to wishlist.");
+      }
+    } catch (error) {
+      console.error("Error adding item to wishlist:", error);
+      toast.error("Failed to add item to wishlist.");
+    }
+  };
+
+  const handlePurchase = async (id) => {
+    const email = user?.email; // Assuming you have the user's email
+    const purchaseDetails = {
+      userEmail: email,
+      itemId: id,
+      itemName: name,
+      itemPrice: price,
+      itemImage: craftPhotoURL,
+    };
+  
+    try {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/purchase`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(purchaseDetails),
+      });
+  
+      if (response.ok) {
+        const result = await response.json();
+        toast.success(result.message); 
+      } else {
+        const errorResponse = await response.json();
+        toast.error(errorResponse.message || "Failed to complete the purchase.");
+      }
+    } catch (error) {
+      console.error("Error making purchase:", error);
+      toast.error("An error occurred while making the purchase.");
+    }
+  };
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   if (!craft) {
     return (
@@ -41,11 +119,10 @@ const ViewDetails = () => {
     );
   }
 
-
   return (
     <div>
       <Helmet>
-        <title>Eco Craft | {name}</title>
+        <title>Eco Craft | Details of {name}</title>
       </Helmet>
       <div className="text-center space-y-3 py-16">
         <h2 className="font-semibold text-2xl font-customPlaywrite">
@@ -146,10 +223,14 @@ const ViewDetails = () => {
                 <span className="flex items-center gap-2 title-font text-gray-900">
                   <FaBangladeshiTakaSign />
                   <p>Price :</p>
-                  {price}
+                  {price} BDT
                 </span>
 
-                <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
+                {/* wish list button */}
+                <button
+                  onClick={() => handleAddOnWishlist(_id)}
+                  className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-600 ml-4"
+                >
                   <svg
                     fill="currentColor"
                     strokeLinecap="round"
@@ -194,10 +275,14 @@ const ViewDetails = () => {
               </div>
             </div>
           </div>
-          <div className="text-center mt-8 hidden">
-            <Link to="/login" className="btn btn-wide hover:bg-gradient-to-l bg-gradient-to-r from-emerald-300 to-orange-400 font-semibold text-lg">
-              Buy Now
-            </Link>
+
+          {/* purchase button */}
+          <div onClick={() => handlePurchase(_id)} className="text-center mt-8 ">
+            <button
+              className="btn btn-sm md:btn-md lg:btn-wide bg-gradient-to-r from-emerald-300 to-orange-400 font-semibold text-sm md:text-lg lg:text-lg text-white rounded-full px-6 py-1 shadow-lg transition-all duration-300 ease-in-out transform hover:scale-110 hover:bg-gradient-to-l hover:from-orange-400 hover:to-emerald-300 hover:shadow-2xl hover:text-black hover:-translate-y-1 hover:border hover:border-emerald-400 focus:outline-none focus:ring-4 focus:ring-emerald-300"
+            >
+              Purchase Now
+            </button>
           </div>
         </div>
       </section>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
+import SectionTitle from "../../components/SectionTitle/SectionTitle";
 
 const AllCraft = () => {
   const [crafts, setCrafts] = useState([]);
@@ -30,21 +31,12 @@ const AllCraft = () => {
   }
 
   return (
-    <div>
+    <div className="max-w-screen-xl px-6 py-4 mx-auto">
       <Helmet>
         <title>Eco Craft | All Crafts</title>
       </Helmet>
-      <div className="text-center space-y-3 py-16">
-        <h2 className="font-semibold text-2xl font-customPlaywrite">
-          All Crafts 😍
-        </h2>
-        <div className="flex gap-1 justify-center items-center pt-4">
-          <h1 className="border-2 border-neutral-400 text-neutral-800 w-3"></h1>
-          <h1 className="border-2 border-neutral-900 bg-black w-8"></h1>
-          <h1 className="border-2 border-neutral-400 text-neutral-800 w-3"></h1>
-        </div>
-      </div>
-
+      <SectionTitle title="All Crafts" />
+      
       {/* Search Input */}
       <div className="flex justify-center mb-8">
         <input

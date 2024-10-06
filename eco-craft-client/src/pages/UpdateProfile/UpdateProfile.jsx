@@ -75,7 +75,7 @@ const UpdateProfile = () => {
           </div>
         </div>
         <div>
-          <h1 className="text-3xl font-semibold" data-aos="slide-down">
+          <h1 className="text-xl md:text-3xl font-semibold" data-aos="slide-down">
             {user.displayName}
           </h1>
           <div
@@ -112,7 +112,7 @@ const UpdateProfile = () => {
       </div>
       <form onSubmit={handleUpdateProfile}>
         <div className="mb-4">
-          <label className="block text-gray-700 mb-2 text-xl font-bold">
+          <label className="block text-gray-700 mb-2 text-lg md:text-3xl font-bold">
             Name
           </label>
           <input
@@ -123,7 +123,7 @@ const UpdateProfile = () => {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 mb-2 text-xl font-bold">
+          <label className="block text-gray-700 mb-2 text-lg md:text-3xl font-bold">
             Photo URL
           </label>
           <input
@@ -136,7 +136,7 @@ const UpdateProfile = () => {
         <div className="text-center">
         <button
           type="submit"
-          className=" btn btn-md lg:btn-wide hover:bg-gradient-to-r bg-gradient-to-l from-emerald-300 to-orange-400 font-semibold text-sm md:text-lg lg:text-lg"
+          className="btn btn-sm md:btn-md lg:btn-wide bg-gradient-to-r from-emerald-300 to-orange-400 font-semibold text-sm md:text-lg lg:text-lg text-white rounded-full px-6 py-1 shadow-lg transition-all duration-300 ease-in-out transform hover:scale-110 hover:bg-gradient-to-l hover:from-orange-400 hover:to-emerald-300 hover:shadow-2xl hover:text-black hover:-translate-y-1 hover:border hover:border-emerald-400 focus:outline-none focus:ring-4 focus:ring-emerald-300"
         >
           Save Changes
         </button>

@@ -43,43 +43,38 @@ const Navbar = () => {
 
   const navLinks = (
     <>
-      <li className="">
+      <li>
         <NavLink to="/">Home</NavLink>
       </li>
-
-      {!user && (
+      {user ? (
+        <>
+          <li>
+            <NavLink to="/allCraft">All Craft</NavLink>
+          </li>
+          <li>
+            <NavLink to="/myCraft">My Craft</NavLink>
+          </li>
+          <li>
+            <NavLink to="/addCraft">Add Craft</NavLink>
+          </li>
+          <li>
+            <NavLink to="/myCart">My Cart</NavLink>
+          </li>
+          <li>
+            <NavLink to="/wishlist">Wishlist</NavLink>
+          </li>
+        </>
+      ) : (
         <li>
           <NavLink to="/register">Register</NavLink>
         </li>
       )}
-
-      {user && (
-        <li>
-          <NavLink to="/allCraft">All Craft</NavLink>
-        </li>
-      )}
-      {user && (
-        <li>
-          <NavLink to="/updateProfile">Update Profile</NavLink>
-        </li>
-      )}
-      {user && (
-        <li>
-          <NavLink to="/myCraft">My Craft</NavLink>
-        </li>
-      )}
-
-      {user && (
-        <li>
-          <NavLink to="/addCraft">Add Craft</NavLink>
-        </li>
-      )}
-
       <li>
         <NavLink to="/contact">Contact Us</NavLink>
       </li>
     </>
   );
+  
 
   if (loading) {
     return <span className="loading loading-bars loading-lg"></span>;
@@ -193,9 +188,6 @@ const Navbar = () => {
                 tabIndex={0}
                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
               >
-                <li>
-                  <a className="justify-between">Profile</a>
-                </li>
                 <li>
                   <Link to="/updateProfile">Settings</Link>
                 </li>

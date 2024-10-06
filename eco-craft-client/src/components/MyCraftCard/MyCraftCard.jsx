@@ -72,7 +72,7 @@ const MyCraftCard = ({ craft, items, setItems }) => {
         </div>
         <form className="flex-auto p-4">
           <div className="flex flex-wrap">
-            <h1 className="flex-auto text-xl font-semibold text-gray-900">
+            <h1 className="flex-auto text-xl font-semibold">
               {name}
             </h1>
             <div className="flex justify-center items-center gap-2 text-lg font-semibold text-black-500">
@@ -99,14 +99,14 @@ const MyCraftCard = ({ craft, items, setItems }) => {
             <div className="flex-auto flex space-x-4">
               <Link
                 to={`/updateMyCraft/${_id}`}
-                className="btn text-teal-900 bg-teal-300 hover:bg-transparent hover:font-bold"
+                className="btn btn-sm md:btn-md text-teal-900 bg-teal-300 hover:bg-transparent hover:font-bold"
                 type="button"
               >
                 Update
               </Link>
               <Link
                 onClick={() => handleDelete(_id)}
-                className="btn text-red-900 bg-red-300 hover:bg-transparent hover:font-bold"
+                className="btn btn-sm md:btn-md  text-red-900 bg-red-300 hover:bg-transparent hover:font-bold"
                 type="button"
               >
                 Delete

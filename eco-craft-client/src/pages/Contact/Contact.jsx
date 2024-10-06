@@ -7,11 +7,11 @@ const Contact = () => {
   return (
     <div className="max-w-screen-xl mx-auto pt-16  ">
       <Helmet>
-        <title>Land Legacy | Contact Us</title>
+        <title>Eco Craft | Contact Us</title>
       </Helmet>
       <div className="text-center space-y-3 ">
         <h2 className="font-semibold text-2xl font-customPlaywrite">
-          Our Main Speciality 😍
+        Contact Us
         </h2>
         <div className="flex gap-1 justify-center items-center pt-4">
           <h1 className="border-2 border-neutral-400 text-neutral-800 w-3"></h1>
@@ -82,7 +82,7 @@ const Contact = () => {
                 placeholder="Subjects"
               ></textarea>
             </div>
-            <button className="rounded-full px-14 btn btn-sm md:btn-md lg:btn-wide hover:bg-gradient-to-l bg-gradient-to-r from-emerald-300 to-orange-400 font-semibold text-sm md:text-lg lg:text-lg">
+            <button className="btn btn-sm md:btn-md lg:btn-wide bg-gradient-to-r from-emerald-300 to-orange-400 font-semibold text-sm md:text-lg lg:text-lg text-white rounded-full px-6 py-1 shadow-lg transition-all duration-300 ease-in-out transform hover:scale-110 hover:bg-gradient-to-l hover:from-orange-400 hover:to-emerald-300 hover:shadow-2xl hover:text-black hover:-translate-y-1 hover:border hover:border-emerald-400 focus:outline-none focus:ring-4 focus:ring-emerald-300">
               Send Message
             </button>
           </div>

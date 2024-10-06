@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import MyCraftCard from "../../components/MyCraftCard/MyCraftCard";
 import { Helmet } from "react-helmet";
+import EmptyContent from "../../components/EmptyContent/EmptyContent";
 
 const MyCraft = () => {
   const { user } = useAuth() || {};
@@ -54,7 +55,7 @@ const MyCraft = () => {
             ))
           ) : (
             <div className="flex justify-center items-center min-h-[calc(100vh-383px)] w-full">
-              <p className="text-6xl font-bold">Opps! No Data Found</p>
+              <EmptyContent title="Opps 🥲" subTitle="No data found!" />
             </div>
           )}
         </div>

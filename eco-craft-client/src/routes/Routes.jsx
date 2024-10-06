@@ -13,6 +13,8 @@ import UpdateMyCraft from "../pages/UpdateMyCraft/UpdateMyCraft";
 import Users from "../pages/Users/Users";
 import ViewDetails from "../pages/ViewDetails/ViewDetails";
 import Contact from "../pages/Contact/Contact";
+import Wishlist from "../pages/Wishlist/Wishlist";
+import MyCart from "../pages/MyCart/MyCart";
 
 export const router = createBrowserRouter([
   {
@@ -90,6 +92,22 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: () => fetch(`${import.meta.env.VITE_API_URL}/user`),
+      },
+      {
+        path: "/wishlist",
+        element: (
+          <PrivateRoute>
+            <Wishlist />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/myCart",
+        element: (
+          <PrivateRoute>
+            <MyCart />
+          </PrivateRoute>
+        ),
       },
     ],
   },

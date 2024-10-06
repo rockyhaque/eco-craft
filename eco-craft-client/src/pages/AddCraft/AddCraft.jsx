@@ -1,6 +1,7 @@
 import { Helmet } from "react-helmet";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
+import SectionTitle from "../../components/SectionTitle/SectionTitle";
 
 const AddCraft = () => {
   const { user } = useAuth() || {};
@@ -64,20 +65,10 @@ const AddCraft = () => {
         <Helmet>
           <title>Eco Craft | Add A Craft</title>
         </Helmet>
-        <div className="text-center space-y-3 py-16">
-          <h5 className="text-customTeal font-semibold text-xl ">Craft</h5>
-          <h2 className="font-semibold text-2xl font-customPlaywrite">
-            Add your desired Craft 😍
-          </h2>
-          <div className="flex gap-1 justify-center items-center pt-4">
-            <h1 className="border-2 border-neutral-400 text-neutral-800 w-3"></h1>
-            <h1 className="border-2 border-neutral-900 bg-black w-8"></h1>
-            <h1 className="border-2 border-neutral-400 text-neutral-800 w-3"></h1>
-          </div>
-        </div>
-
+        <SectionTitle title="Add your desired Craft 😍"/>
+        
         <section>
-          <div className=" px-24 py-6">
+          <div className="px-6 md:px-0 py-2">
             <form onSubmit={handleAddCraft}>
               {/* Form name and category Row */}
               <div className="flex flex-col md:flex-row lg:flex-row gap-4 mb-7">
@@ -243,11 +234,11 @@ const AddCraft = () => {
                 </div>
               </div>
 
-              <div className="text-center">
+              <div className="text-center mb-6">
                 <input
                   type="submit"
                   value="Add Craft"
-                  className="btn btn-md lg:btn-wide hover:bg-gradient-to-r bg-gradient-to-l from-emerald-300 to-orange-400 font-semibold text-sm md:text-lg lg:text-lg"
+                  className="btn btn-sm md:btn-md lg:btn-wide bg-gradient-to-r from-emerald-300 to-orange-400 font-semibold text-sm md:text-lg lg:text-lg text-white rounded-full px-6 py-1 shadow-lg transition-all duration-300 ease-in-out transform hover:scale-110 hover:bg-gradient-to-l hover:from-orange-400 hover:to-emerald-300 hover:shadow-2xl hover:text-black hover:-translate-y-1 hover:border hover:border-emerald-400 focus:outline-none focus:ring-4 focus:ring-emerald-300"
                 />
               </div>
             </form>

@@ -1,12 +1,13 @@
 import { Helmet } from "react-helmet";
 import useAuth from "../../hooks/useAuth";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 // import { useState, useEffect } from "react";
 import toast from "react-hot-toast";
 
 const UpdateMyCraft = () => {
   const { user } = useAuth() || {};
   const craft = useLoaderData();
+  const navigate = useNavigate();
 
   // console.log(craft);
 
@@ -23,62 +24,6 @@ const UpdateMyCraft = () => {
     craftPhotoURL,
   } = craft;
 
-  // const handleUpdateCraft = (e) => {
-  //   e.preventDefault();
-  //   const form = e.target;
-  //   const name = form.name.value;
-  //   const rating = form.rating.value;
-  //   const category = form.category.value;
-  //   const price = form.price.value;
-  //   const customization = form.customization.value;
-  //   const stockStatus = form.stockStatus.value;
-  //   const processing_time = form.processing_time.value;
-  //   const description = form.description.value;
-  //   const craftPhotoURL = form.craftPhotoURL.value;
-
-  //   const email = user.email;
-  //   const userName = user.displayName;
-  //   const photoURL = user.photoURL;
-  //   const accountCreation = user.metadata?.creationTime;
-  //   const accountLastSignIn = user.metadata?.lastSignInTime;
-
-  //   const info = {
-  //     name,
-  //     rating,
-  //     category,
-  //     price,
-  //     customization,
-  //     stockStatus,
-  //     processing_time,
-  //     description,
-  //     craftPhotoURL,
-  //     photoURL,
-  //     email,
-  //     userName,
-  //     accountCreation,
-  //     accountLastSignIn,
-  //   };
-
-  //   console.log(info);
-
-  //   // sending data to the server
-  //   fetch(`https://eco-craft-server-phi.vercel.app/craft/${_id}`, {
-  //     method: "PUT",
-  //     headers: {
-  //       "content-type": "application/json",
-  //     },
-  //     body: JSON.stringify(info),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //       if (data.modifiedCount > 0) {
-  //         toast.success(`${name} has been updated Successfully 🤩`);
-  //       }
-  //     });
-
-  //   form.reset();
-  // };
 
   const handleUpdateCraft = (e) => {
     e.preventDefault();
@@ -116,6 +61,7 @@ const UpdateMyCraft = () => {
       .then((data) => {
         if (data.modifiedCount > 0) {
           toast.success(`${name} has been updated Successfully 🤩`);
+          navigate("/myCraft")
         }
       });
     form.reset();
@@ -318,7 +264,7 @@ const UpdateMyCraft = () => {
                 <input
                   type="submit"
                   value="Update Craft"
-                  className="btn btn-md lg:btn-wide hover:bg-gradient-to-r bg-gradient-to-l from-emerald-300 to-orange-400 font-semibold text-sm md:text-lg lg:text-lg"
+                  className="btn btn-sm md:btn-md lg:btn-wide bg-gradient-to-r from-emerald-300 to-orange-400 font-semibold text-sm md:text-lg lg:text-lg text-white rounded-full px-6 py-1 shadow-lg transition-all duration-300 ease-in-out transform hover:scale-110 hover:bg-gradient-to-l hover:from-orange-400 hover:to-emerald-300 hover:shadow-2xl hover:text-black hover:-translate-y-1 hover:border hover:border-emerald-400 focus:outline-none focus:ring-4 focus:ring-emerald-300"
                 />
               </div>
             </form>
